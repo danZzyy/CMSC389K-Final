@@ -1,0 +1,15 @@
+<h2>Venues in Washington,DC</h2>
+<table>
+  <thead>
+    <tr>
+      <td>Name</td><td>Type</td><td>Capacity</td>
+    </tr>
+  </thead>
+  {{#each v}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.venue_type}}</td>
+      <td>{{this.capacity}}</td>
+    </tr>
+  {{/each}}
+</table>

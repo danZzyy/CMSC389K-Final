@@ -1,0 +1,58 @@
+
+<input type="search" id="search" placeholder="Search..">
+<div id="data-area">
+  <h2>Venues</h2>
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td><td>Location</td><td>Type</td><td>Capacity</td>
+      </tr>
+    </thead>
+    {{#each v}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.city}},{{this.state}}</td>
+        <td>{{this.venue_type}}</td>
+        <td>{{this.capacity}}</td>
+      </tr>
+    {{/each}}
+  </table>
+  <h2>Bands</h2>
+  <ul>
+    {{#each b}}
+      <li>{{this.name}}</li>
+    {{/each}}
+  </ul>
+  <h2>Shows</h2>
+  <table>
+    <thead>
+      <tr>
+        <td>Venue</td><td>Bands</td><td>Date</td><td>Description</td>
+      </tr>
+    </thead>
+    {{#each s}}
+      <tr>
+        <td>{{this.venue_name}}</td>
+        <td>{{this.bands}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.description}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</div>
+<script>
+  $('#search').on('keyup', function(e){
+    $('#data-area').html("");
+    var text = $(this).val();
+    var results = [];
+    var res_html = "";
+    App.v.forEach(function(ven){
+      if(ven.name.substring(0, text.length) == text){
+        results.push(ven);
+        res_html += '<li>' + ven.name + '</li>';
+      }
+    });
+
+    $('#data-area').html('<ol>' + res_html + '</ol>');
+  });
+</script>

@@ -1,0 +1,35 @@
+<form id="venue-form" action="/venue" method="post">
+  <h3>Create a New Venue</h3>
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td><input type="text" name="name" value=""></td>
+    </tr>
+    <tr>
+      <td>City: </td>
+      <td><input type="text" name="city" value=""></td>
+    </tr>
+    <tr>
+      <td>State: </td>
+      <td><input type="text" name="state" value=""></td>
+    </tr>
+    <tr>
+      <td>Venue Type: </td>
+      <td>
+        <select form="venue-form" name="type">
+          <option value="Bar">Bar</option>
+          <option value="House">House</option>
+          <option value="Radio Station">Radio Station</option>
+          <option value="Festival Grounds">Festival Grounds</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Capacity: </td>
+      <td><input type="text" name="capacity" value=""></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input id="submit" type="submit" value="SUBMIT"></td>
+    </tr>
+  </table>
+</form>

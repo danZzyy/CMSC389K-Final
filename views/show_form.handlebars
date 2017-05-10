@@ -1,0 +1,55 @@
+<form id="show-form" action="/show" method="post"  >
+  <h3>Create a New Show</h3>
+  <table>
+    <tr>
+      <td>Venue: </td>
+      <td>
+        <select form="show-form" name="venue">
+          {{#each v}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Date: </td>
+      <td><input type="date" name="date" value=""></td>
+    </tr>
+    <tr>
+      <td>Bands: </td>
+      <td>
+        <input id="band" type="text" name="band" value="">
+        <ol id="band-list">
+        </ol>
+        <input id="bands" type="hidden" name="bands" value="">
+      </td>
+    </tr>
+    <tr>
+      <td>Description: </td>
+      <td><textarea form="show-form" name="description" rows="4" cols="40"></textarea></td>
+    </tr>
+
+    <tr>
+      <td colspan="2"><input id="submit" type="submit" value="SUBMIT"></td>
+    </tr>
+  </table>
+</form>
+<script>
+  $(document).keypress(function(e){
+    if(e.which == '13') e.preventDefault();
+  });
+  var bands = [];
+  $('#band').bind("enterKey", function(e){
+    var band = $(this).val();
+    $(this).val("");
+    $("#band-list").append('<li>' + band + "</li>");
+    bands.push(band);
+    $('#bands').val(bands);
+  });
+  $('#band').keyup(function(e){
+    if(e.keyCode == 13) $(this).trigger("enterKey");
+  });
+  $('#submit').on('click', function(){
+    document.getElementById('show-form').submit();
+  });
+</script>
